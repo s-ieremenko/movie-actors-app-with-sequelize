@@ -9,7 +9,7 @@ export const getAllActors = async () => {
       through: { attributes: [] },
     },
   });
-  if (!actors.length === 0) {
+  if (actors.length === 0) {
     throw new Error('No actors found');
   }
   return actors;
@@ -17,7 +17,7 @@ export const getAllActors = async () => {
 
 export const getAllByAmploue = async (amploue) => {
   const actors = await Actor.findAll({
-    where: amploue,
+    where: { amploue },
   });
   if (!actors.length === 0) {
     throw new Error('No such actors with that amploue found');
@@ -27,8 +27,9 @@ export const getAllByAmploue = async (amploue) => {
 
 export const getOneActorByName = async (name) => {
   const actor = await Actor.findOne({
-    where: name,
+    where: { name },
   });
+  console.log(actor);
   if (!actor) {
     throw new Error('No such an actor found');
   }

@@ -1,5 +1,3 @@
-import express from 'express';
-
 import {
   getAllActors,
   getOneActorByName,
@@ -24,7 +22,7 @@ export class ActorController {
       res.status(403).send('Name required');
     }
     try {
-      const actor = await getOneActorByName();
+      const actor = await getOneActorByName(name);
       res.status(200).send(actor);
     } catch (error) {
       res.status(404).send(error.message);
@@ -48,7 +46,7 @@ export class ActorController {
       res.status(403).send('Amploue required');
     }
     try {
-      const actors = await getAllByAmploue();
+      const actors = await getAllByAmploue(amploue);
       res.status(200).send(actors);
     } catch (error) {
       res.status(404).send(error.message);

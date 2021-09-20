@@ -4,5 +4,6 @@ import { MovieController } from './model.controller.js';
 const movieRouter = new Router();
 
 movieRouter.get('/', MovieController.getAll);
+movieRouter.post('/post', MovieController.createOne);
 
 export default movieRouter;

@@ -33,11 +33,17 @@ export const countMovieByDirector = async (directorName) => {
       name: directorName,
     },
   });
+  if (!director) {
+    throw new Error('No directors with such a name');
+  }
   const directorUuid = director.id;
   const { count } = await Movie.findAndCountAll({
     where: {
       DirectorId: directorUuid,
     },
   });
+  // if (count) {
+  //   throw new Error('No movies found');
+  // }
   return count;
 };

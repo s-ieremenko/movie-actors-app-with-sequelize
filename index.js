@@ -10,6 +10,7 @@ import { makeRelations } from './src/relations.js';
 import actorRouter from './src/actor/actor.route.js';
 import directorRouter from './src/director/director.route.js';
 import movieRouter from './src/movie/movie.route.js';
+import assistantRouter from './src/assistant/assistant.route.js';
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/actor', actorRouter);
 app.use('/director', directorRouter);
 app.use('/movie', movieRouter);
+app.use('/assistant', assistantRouter);
 
 app.listen(port, () => {
   console.log(`Server starts listening on port ${port}`);

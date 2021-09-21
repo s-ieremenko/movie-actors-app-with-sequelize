@@ -61,7 +61,7 @@ export class ActorController {
       await createActor(name, amploue);
       res.status(201).send('Actor is created');
     } catch (error) {
-      res.status(403).send(error.message);
+      res.status(500).send(error.message);
     }
   }
   static async updateActor(req, res) {

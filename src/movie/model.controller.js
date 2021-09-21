@@ -1,6 +1,7 @@
 import {
   getAllMoviesWithDirectorAndActors,
   createMovie,
+  countMovieByDirector,
 } from './movie.service.js';
 
 export class MovieController {
@@ -23,6 +24,23 @@ export class MovieController {
       res.status(201).send('Movie is created');
     } catch (error) {
       res.status(403).send('Bad request');
+    }
+  }
+
+  static async countDirectorsMovie(req, res) {
+    const directorName = req.body.directorName;
+    if (!directorName) {
+      return res.status(403).send('name required');
+    }
+    try {
+      const amountOfMovies = await countMovieByDirector(directorName);
+      res
+        .status(200)
+        .send(
+          `Total amount of movies filmed by ${directorName} is ${amountOfMovies}`
+        );
+    } catch (error) {
+      res.status(404).send(error.message);
     }
   }
 }

@@ -26,3 +26,18 @@ export const getAllMoviesWithDirectorAndActors = async () => {
 export const createMovie = async (title, year, genre) => {
   await Movie.create({ title, year, genre });
 };
+
+export const countMovieByDirector = async (directorName) => {
+  const director = await Director.findOne({
+    where: {
+      name: directorName,
+    },
+  });
+  const directorUuid = director.id;
+  const { count } = await Movie.findAndCountAll({
+    where: {
+      DirectorId: directorUuid,
+    },
+  });
+  return count;
+};

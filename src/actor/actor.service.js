@@ -2,7 +2,7 @@ import Actor from './actor.model.js';
 import Movie from '../movie/movie.model.js';
 
 export const getAllActors = async () => {
-  const actors = Actor.findAll({
+  const actors = await Actor.findAll({
     include: {
       model: Movie,
       attributes: ['title'],
@@ -19,7 +19,7 @@ export const getAllByAmploue = async (amploue) => {
   const actors = await Actor.findAll({
     where: { amploue },
   });
-  if (!actors.length === 0) {
+  if (actors.length === 0) {
     throw new Error('No such actors with that amploue found');
   }
   return actors;

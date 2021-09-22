@@ -19,6 +19,23 @@ Assistant.init(
     age: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        isInt: true,
+        min: 18,
+        max: 100,
+      },
+    },
+    experience: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 2,
+      },
+    },
+    email: {
+      type: DataTypes.STRING,
+      validate: {
+        isEmail: true,
+      },
     },
   },
   {

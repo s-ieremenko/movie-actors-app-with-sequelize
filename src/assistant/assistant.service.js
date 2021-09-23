@@ -9,12 +9,19 @@ export const getAllAsistants = async () => {
   return assistants;
 };
 
-export const createAssistant = async (name, age, experience, email) => {
+export const createAssistant = async (name, age, email, start) => {
   const existingAssistant = await Assistant.findOne({ where: { email } });
   if (existingAssistant) {
     throw new Error('Assistant already exists');
   }
-  await Assistant.create({ name, age, experience, email });
+  const workingDuration = new Date().getFullYear() - start;
+  await Assistant.create({
+    name,
+    age,
+    email,
+    start,
+    workingDuration,
+  });
 };
 
 export const setAssistantToDirector = async (assistantUuid, directorUuid) => {

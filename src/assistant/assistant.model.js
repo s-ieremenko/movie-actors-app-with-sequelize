@@ -25,17 +25,18 @@ Assistant.init(
         max: 100,
       },
     },
-    experience: {
-      type: DataTypes.INTEGER,
-      validate: {
-        min: 2,
-      },
-    },
     email: {
       type: DataTypes.STRING,
       validate: {
         isEmail: true,
       },
+      unique: true,
+    },
+    start: {
+      type: DataTypes.INTEGER,
+    },
+    workingDuration: {
+      type: DataTypes.INTEGER,
     },
   },
   {

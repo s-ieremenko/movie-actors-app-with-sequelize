@@ -26,14 +26,11 @@ Assistant.init(
       },
     },
 
-    experience: {
-      type: DataTypes.INTEGER,
+    email: {
+      type: DataTypes.STRING,
       validate: {
-        min: 2,
+        isEmail: true,
       },
-    },
-
-
       unique: true,
     },
     start: {
@@ -41,7 +38,6 @@ Assistant.init(
     },
     workingDuration: {
       type: DataTypes.INTEGER,
-
     },
   },
   {

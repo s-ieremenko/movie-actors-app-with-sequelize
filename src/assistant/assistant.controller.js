@@ -17,12 +17,15 @@ export class AssistantController {
   }
 
   static async createOne(req, res) {
+
     const { name, age, experience, email, start } = req.body;
     if (!name || !age || !email || !start) {
       res.status(403).send('All the fields are required');
     }
     try {
       await createAssistant(name, age, email, start);
+
+
       res.status(201).send('created');
     } catch (error) {
       res.status(403).send(error.message);

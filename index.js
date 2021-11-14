@@ -27,7 +27,9 @@ app.listen(port, () => {
   sequelize.authenticate().then(async () => {
     try {
       makeRelations();
+
       await sequelize.sync({ alter: true });
+
     } catch (error) {
       console.log(error.message);
     }

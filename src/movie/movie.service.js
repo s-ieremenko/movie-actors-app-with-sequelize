@@ -42,8 +42,5 @@ export const countMovieByDirector = async (directorName) => {
       DirectorId: directorUuid,
     },
   });
-  // if (count) {
-  //   throw new Error('No movies found');
-  // }
   return count;
 };
